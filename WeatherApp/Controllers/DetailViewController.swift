@@ -12,17 +12,19 @@ import DataPersistence
 import AVFoundation
 
 class DetailViewController: UIViewController {
-    private let detailView = DetailView()
     
+    private let detailView = DetailView()
     public var dataPersistence: DataPersistence<ImageObject>!
     private var imageObjects = [ImageObject]()
     private var cityImage: UIImage?
-    override func loadView() {
-        view = detailView
-    }
     public var weatherData: DailyDatum?
     public var locationName: String?
     private var cityPicURL: String?
+    
+    override func loadView() {
+        view = detailView
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class DetailViewController: UIViewController {
         loadWeatherDetails()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action:#selector(saveFavoritePhoto))
     }
+    
     @objc private func saveFavoritePhoto(_ sender: UIBarButtonItem) {
         guard let image = cityImage else {
             print("Image is nil")
@@ -50,6 +53,7 @@ class DetailViewController: UIViewController {
             print("Error saving photo: \(error)")
         }
     }
+    
     private func loadLocationPhotoURL() {
         PixaBayAPI.getPhotos(searchQuery: locationName ?? "https://pixabay.com/get/52e4d2444a53b108f5d08460962933771738dbe75a4c704c7d2e7bd0914bcd50_1280.jpg") { (results) in
             switch results {
@@ -63,6 +67,7 @@ class DetailViewController: UIViewController {
             }
         }
     }
+    
     private func loadPhoto() {
         DispatchQueue.main.async {
             self.detailView.cityImage.getImage(with: self.cityPicURL ?? "") { [ weak self ] (results) in
@@ -81,6 +86,7 @@ class DetailViewController: UIViewController {
             }
         }
     }
+    
     private func loadWeatherDetails() {
         let date = NSDate(timeIntervalSince1970: TimeInterval(weatherData!.time))
         let dateFormatter = DateFormatter()
@@ -94,6 +100,7 @@ class DetailViewController: UIViewController {
     }
     
 }
+
 extension UIImage {
     func resizeImage(to width: CGFloat, height: CGFloat) -> UIImage {
         let size = CGSize(width: width, height: height)

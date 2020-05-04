@@ -13,7 +13,6 @@ struct DarkSkyWeatherData: Codable {
     let daily: Daily
 }
 
-// MARK: - Currently
 struct Currently: Codable {
     let time: Int
     let summary: String
@@ -29,13 +28,11 @@ enum Icon: String, Codable {
     case partlyCloudyNight = "partly-cloudy-night"
 }
 
-// MARK: - Daily
 struct Daily: Codable {
     let summary, icon: String
     let data: [DailyDatum]
 }
 
-// MARK: - DailyDatum
 struct DailyDatum: Codable {
     let time: Int
     let summary, icon: String

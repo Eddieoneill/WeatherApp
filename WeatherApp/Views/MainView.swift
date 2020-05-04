@@ -39,20 +39,23 @@ class MainView: UIView {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
+    
     private func commonInit() {
         setupCollectionViewConstraints()
         setupTextFieldConstraints()
         setupSectionHeaderLabel()
     }
+    
     private func setupCollectionViewConstraints() {
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        
+            
             collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 60),
             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
@@ -65,14 +68,15 @@ class MainView: UIView {
         addSubview(textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        
+            
             textField.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20),
             textField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 80),
             textField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -80),
             textField.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
-                    
+            
         ])
     }
+    
     private func setupSectionHeaderLabel() {
         addSubview(sectionHeaderLabel)
         sectionHeaderLabel.translatesAutoresizingMaskIntoConstraints = false

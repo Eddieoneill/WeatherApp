@@ -19,6 +19,7 @@ class MainTabBarController: UITabBarController {
             viewController.tabBarItem = UITabBarItem(title: "Forecast", image: UIImage(systemName: "cloud"), tag: 0)
             return viewController
         }()
+    
         private lazy var favoritesVC: FavoritsViewController = {
             let viewController = FavoritsViewController()
             viewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.fill"), tag: 1)
@@ -31,12 +32,10 @@ class MainTabBarController: UITabBarController {
             viewController.dataPersistence = dataPersistence
             return viewController
         }()
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             viewControllers = [UINavigationController(rootViewController: forecastVC), UINavigationController(rootViewController: favoritesVC)]
         }
-        
-
-
 
     }
