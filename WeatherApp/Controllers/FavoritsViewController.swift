@@ -15,7 +15,6 @@ class FavoritsViewController: UIViewController {
     private var favoriteImages = [ImageObject]() {
         didSet {
             favoriteView.favoritesTableView.reloadData()
-            print(favoriteImages.count)
         }
     }
     
@@ -41,7 +40,6 @@ class FavoritsViewController: UIViewController {
     private func loadFavoriteImages() {
         do {
             favoriteImages = try dataPersistence.loadItems()
-            print(favoriteImages.count)
         } catch {
             print("Error loading Images: \(error)")
         }

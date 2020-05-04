@@ -62,7 +62,6 @@ class WeatherViewController: UIViewController {
                 self.lat = locationData.lat
                 self.long = locationData.long
                 self.locationName = locationData.placeName
-                print(self.lat, self.long)
             }
         }
     }
@@ -81,7 +80,6 @@ class WeatherViewController: UIViewController {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if let sectionHeader = mainView.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionLabel", for: indexPath) as? SectionHeader {
             sectionHeader.sectionHeaderLabel.text = "\(locationName)"
-            print(locationName)
             return sectionHeader
         }
         return UICollectionReusableView()
